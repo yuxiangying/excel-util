@@ -22,7 +22,7 @@ public class TestExportBean {
         dataset.add(new Model("", "", "", null));
         dataset.add(new Model(null, null, null, null));
         dataset.add(new Model("王五", "34", "男", new Date()));
-        File f = new File("src/test/resources/test1.xls");
+        File f = new File("src/test/resources/test.xls");
         OutputStream out = new FileOutputStream(f);
 
         ExcelUtil.exportExcel(map, dataset, out);

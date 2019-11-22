@@ -1,4 +1,4 @@
-package com.sargeraswang.util.ExcelUtil;
+package com.sargeraswang.util.ExcelUtil.vo.occupation;
 
 import com.sargeraswang.util.ExcelUtil.oragin.ExcelCell;
 
@@ -6,9 +6,9 @@ import com.sargeraswang.util.ExcelUtil.oragin.ExcelCell;
  * @author yuxy_cyd
  * @version v-1.1.0
  * @Description:TODO(这里用一句话描述这个类的作用)
- * @date: 2019年11月21日 16:07
+ * @date: 2019年11月22日 13:45
  **/
-public class Occupation {
+public class OccupationExcel {
     @ExcelCell(index = 0)
     private String index;
     @ExcelCell(index = 1)

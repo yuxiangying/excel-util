@@ -6,4 +6,6 @@ public interface OccupationGenerator {
 
     String toJson(InputStream inputStream);
 
+    boolean createJsonFile(String jsonString, String filePath, String fileName);
+
 }

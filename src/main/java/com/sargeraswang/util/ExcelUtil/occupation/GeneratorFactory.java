@@ -23,6 +23,8 @@ public abstract class GeneratorFactory {
 
     public final static int INSURER_BAINIAN = 7;
 
+    public final static int INSURER_SHANGHAI = 8;
+
 
     private GeneratorFactory() {
     }
@@ -47,6 +49,8 @@ public abstract class GeneratorFactory {
                 return new OccupationGeneratorBeiJin(3, 2145);
             case INSURER_BAINIAN:
                 return new OccupationGeneratorBaiNian(3, 2161);
+            case INSURER_SHANGHAI:
+                return new OccupationGeneratorShangHai(2, 2045);
         }
         return null;
     }
@@ -59,13 +63,13 @@ public abstract class GeneratorFactory {
 
         switch (insurerCode) {
             case INSURER_AIXIN:
-                filePath = "/Users/wangpeng/git/GitHub/ExcelUtil/excel/爱心人寿.xlsx";
+                filePath = "D:/java/guohua/ExcelUtil/excel/爱心人寿.xlsx";
                 break;
             case INSURER_FUXINGLHJK:
-                filePath = "/Users/wangpeng/git/GitHub/ExcelUtil/excel/复星联合.xlsx";
+                filePath = "D:/java/guohua/ExcelUtil/excel/复星联合.xlsx";
                 break;
             case INSURER_KUNLUNJK:
-                filePath = "/Users/wangpeng/git/GitHub/ExcelUtil/excel/昆仑健康.xlsx";
+                filePath = "D:/java/guohua/ExcelUtil/excel/昆仑健康.xlsx";
                 break;
             case INSURER_WANGJIN:
                 filePath = "/Users/wangpeng/git/GitHub/ExcelUtil/excel/网金保险.xlsx";
@@ -82,6 +86,9 @@ public abstract class GeneratorFactory {
             case INSURER_BAINIAN:
                 filePath = "/Users/wangpeng/git/GitHub/ExcelUtil/excel/百年人寿.xlsx";
                 break;
+            case INSURER_SHANGHAI:
+                filePath = "D:/java/guohua/ExcelUtil/excel/上海人寿.xlsx";
+                break;
 
         }
 
@@ -96,6 +103,48 @@ public abstract class GeneratorFactory {
             e.printStackTrace();
         }
         return in;
+    }
+
+
+    public static String getOccupationFileName(int insurerCode) {
+
+        String fileName = null;
+
+        switch (insurerCode) {
+            case INSURER_AIXIN:
+                fileName = "爱心人寿";
+                break;
+            case INSURER_FUXINGLHJK:
+                fileName = "复星联合";
+                break;
+            case INSURER_KUNLUNJK:
+                fileName = "昆仑健康";
+                break;
+            case INSURER_WANGJIN:
+                fileName = "网金保险";
+                break;
+            case INSURER_YIAN:
+                fileName = "易安保险.";
+                break;
+            case INSURER_FUXINGBDX:
+                fileName = "复星保德信";
+                break;
+            case INSURER_BEIJING:
+                fileName = "北京人寿";
+                break;
+            case INSURER_BAINIAN:
+                fileName = "百年人寿";
+                break;
+            case INSURER_SHANGHAI:
+                fileName = "上海人寿";
+                break;
+
+        }
+        if (fileName == null || "".equals(fileName)) {
+            throw new RuntimeException("文件路径为空！");
+        }
+
+        return fileName;
     }
 
 }

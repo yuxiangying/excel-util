@@ -5,6 +5,7 @@ import com.sargeraswang.util.ExcelUtil.vo.area.AreaExcel;
 import com.sargeraswang.util.ExcelUtil.vo.occupation.OccupationExcel;
 import com.sargeraswang.util.ExcelUtil.vo.occupation.OccupationGradeCode;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -86,8 +87,8 @@ public class ExcelTemplate {
 
         }
 
-        JSONArray json = new JSONArray().fromObject(areaCode);
-        System.out.println(json);
+        JSONObject jsonObject = new JSONObject().fromObject(areaCode);
+        System.out.println(jsonObject.toString());
     }
 
 
@@ -151,7 +152,7 @@ public class ExcelTemplate {
             }
         }
 
-        JSONArray json = new JSONArray().fromObject(occupationGradeCode);
-        System.out.println(json);
+        JSONObject jsonObject = new JSONObject().fromObject(occupationGradeCode);
+        System.out.println(jsonObject.toString());
     }
 }

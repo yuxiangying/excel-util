@@ -11,22 +11,28 @@ import java.util.List;
  **/
 public class AreaCode {
 
-    private String code;
-    private List<ProvinceCode> content = new ArrayList<>();
+    private Integer code;
+    /*private List<ProvinceCode> content = new ArrayList<>();*/
+    private List<List<ProvinceCode>> content = new ArrayList<>();
 
-    public String getCode() {
+    public AreaCode() {
+        List<ProvinceCode> content1 = new ArrayList<>();
+        this.content.add(content1);
+    }
+
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
-    public List<ProvinceCode> getContent() {
+    public List<List<ProvinceCode>> getContent() {
         return content;
     }
 
-    public void setContent(List<ProvinceCode> content) {
+    public void setContent(List<List<ProvinceCode>> content) {
         this.content = content;
     }
 

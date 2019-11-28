@@ -31,40 +31,44 @@ public class OccupationGeneratorShangHai extends ThreeLevelOccupationGenerator {
             Cell cell2 = sheet.getRow(i).getCell(1);
             Cell cell3 = sheet.getRow(i).getCell(2);
             Cell cell4 = sheet.getRow(i).getCell(3);
+            Cell cell5 = sheet.getRow(i).getCell(4);
 
             String oneValue = cell1.getStringCellValue();
             String twoValue = cell2.getStringCellValue();
             String threeCode = cell3.getStringCellValue();
             String threeValue = cell4.getStringCellValue();
+            String threeGrade = cell5.getStringCellValue();
+            Integer threeGradeNum = Integer.parseInt(threeGrade);
+            if(threeGradeNum>=1 && threeGradeNum<=4){
+                logger.info("当前行为:{},解析的值分别为:{}|{}|{}|{}", i, oneValue, twoValue, threeCode, threeValue);
 
-            logger.info("当前行为:{},解析的值分别为:{}|{}|{}|{}", i, oneValue, twoValue, threeCode, threeValue);
-
-            if (notNull(oneValue)) {
-                oneCode = String.format("%02d", oneNumber);
-                oneValueTemp = oneValue;
-                SortMap<String, List<String>> midMap = new SortMap<>();
-                bigMap.put(oneCode + "#" + oneValueTemp, midMap);
+                if (notNull(oneValue)) {
+                    oneCode = String.format("%02d", oneNumber);
+                    oneValueTemp = oneValue;
+                    SortMap<String, List<String>> midMap = new SortMap<>();
+                    bigMap.put(oneCode + "#" + oneValueTemp, midMap);
 
 
-                oneNumber++;
+                    oneNumber++;
+                }
+
+                if (notNull(twoValue)) {
+                    twoCode = oneCode.concat(String.format("%02d", twoNumber));
+                    twoValueTemp = twoValue;
+                    Map<String, List<String>> midMapTemp = bigMap.get(oneCode + "#" + oneValueTemp);
+
+                    List<String> list = new ArrayList<>();
+                    midMapTemp.put(twoCode + "#" + twoValueTemp, list);
+
+
+                    twoNumber++;
+                }
+
+                SortMap<String, List<String>> midMapTemp = bigMap.get(oneCode + "#" + oneValueTemp);
+
+                List<String> listTemp = midMapTemp.get(twoCode + "#" + twoValueTemp);
+                listTemp.add(threeCode + "#" + threeValue+ "#" + threeGrade);
             }
-
-            if (notNull(twoValue)) {
-                twoCode = String.format("%02d", twoNumber);
-                twoValueTemp = twoValue;
-                Map<String, List<String>> midMapTemp = bigMap.get(oneCode + "#" + oneValueTemp);
-
-                List<String> list = new ArrayList<>();
-                midMapTemp.put(twoCode + "#" + twoValueTemp, list);
-
-
-                twoNumber++;
-            }
-
-            SortMap<String, List<String>> midMapTemp = bigMap.get(oneCode + "#" + oneValueTemp);
-
-            List<String> listTemp = midMapTemp.get(twoCode + "#" + twoValueTemp);
-            listTemp.add(threeCode + "#" + threeValue);
         }
         return bigMap;
     }

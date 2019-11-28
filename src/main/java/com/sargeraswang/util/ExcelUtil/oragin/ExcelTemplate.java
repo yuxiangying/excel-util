@@ -1,5 +1,7 @@
 package com.sargeraswang.util.ExcelUtil.oragin;
 
+import com.sargeraswang.util.ExcelUtil.occupation.GeneratorFactory;
+import com.sargeraswang.util.ExcelUtil.occupation.OccupationGenerator;
 import com.sargeraswang.util.ExcelUtil.vo.area.AreaCode;
 import com.sargeraswang.util.ExcelUtil.vo.area.AreaExcel;
 import com.sargeraswang.util.ExcelUtil.vo.occupation.OccupationExcel;
@@ -37,7 +39,7 @@ public class ExcelTemplate {
         Collection<AreaExcel> importExcel = ExcelUtil.importExcel(AreaExcel.class, inputStream, "yyyy/MM/dd HH:mm:ss", logs, 0);
 
         AreaCode areaCode = new AreaCode();
-        areaCode.setCode("0");
+        areaCode.setCode(0);
 
         for (AreaExcel areaExcel : importExcel) {
             AreaCode.CountyCode countyCode = new AreaCode.CountyCode();
@@ -47,7 +49,7 @@ public class ExcelTemplate {
             boolean provinceFlag = false;
             boolean cityFlag = false;
 
-            for (AreaCode.ProvinceCode provinceCode: areaCode.getContent()){
+            for (AreaCode.ProvinceCode provinceCode: areaCode.getContent().get(0)){
                 if (provinceCode.getValue().equals(areaExcel.getProvinceCode().trim())){
                     provinceFlag = true;
                     for (AreaCode.CityCode cityCode: provinceCode.getChildren()){
@@ -81,13 +83,18 @@ public class ExcelTemplate {
 
                 provinceCode.getChildren().add(cityCode);
 
-                areaCode.getContent().add(provinceCode);
+                areaCode.getContent().get(0).add(provinceCode);
             }
 
 
         }
 
         JSONObject jsonObject = new JSONObject().fromObject(areaCode);
+
+        int insurerCode = GeneratorFactory.INSURER_SHANGHAI;
+
+        OccupationGenerator generator = GeneratorFactory.getInstance(insurerCode);
+        boolean flag = generator.createJsonFile(jsonObject.toString(), "D:/java/guohua/ExcelUtil/excel/json", "上海人寿地区码表");
         System.out.println(jsonObject.toString());
     }
 

@@ -6,6 +6,7 @@ public class Option implements Serializable {
 
     private String value;
     private String label;
+    private String grade;
     private OccupationDTO children;
 
     public String getValue() {
@@ -22,6 +23,14 @@ public class Option implements Serializable {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     public OccupationDTO getChildren() {

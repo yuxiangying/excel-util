@@ -136,7 +136,7 @@ public abstract class GeneratorFactory {
                 fileName = "百年人寿";
                 break;
             case INSURER_SHANGHAI:
-                fileName = "上海人寿";
+                fileName = "上海人寿职业编码";
                 break;
 
         }

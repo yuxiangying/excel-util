@@ -74,6 +74,7 @@ public abstract class ThreeLevelOccupationGenerator extends AbstractOccupationGe
                     Option thirdOption = new Option();
                     thirdOption.setValue(thirdKey.split("#")[0]);
                     thirdOption.setLabel(thirdKey.split("#")[1]);
+                    thirdOption.setGrade(thirdKey.split("#")[2]);
                     thirdOptions.add(thirdOption);
                 }
             }

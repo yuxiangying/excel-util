@@ -5,6 +5,7 @@ import java.util.List;
 
 public class OccupationDTO implements Serializable {
 
+    //private Integer code;//以后要交code=0,说是表示请求成功
     private String name;
     private String label;
     private List<Option> options;

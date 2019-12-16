@@ -1,5 +1,8 @@
 package com.sargeraswang.util.ExcelUtil.occupation;
 
+import com.sargeraswang.util.ExcelUtil.util.JsonUtil;
+
+import java.io.File;
 import java.io.InputStream;
 
 public class Bootstrap {
@@ -11,12 +14,10 @@ public class Bootstrap {
         OccupationGenerator generator = GeneratorFactory.getInstance(insurerCode);
         InputStream inputStream = GeneratorFactory.getOccupationFile(insurerCode);
         String occupationJson = generator.toJson(inputStream);
-
-        String fileName = GeneratorFactory.getOccupationFileName(insurerCode);
-        boolean flag = generator.createJsonFile(occupationJson, "D:/java/guohua/ExcelUtil/excel/json", fileName);
-
         System.out.println(occupationJson);
+        String fileName = GeneratorFactory.getOccupationFileName(insurerCode);
 
-
+        String outFilePath = "D:/java/guohua/ExcelUtil/excel/json" + File.separator + fileName + ".json";
+        boolean flag = JsonUtil.createJsonFile(occupationJson, outFilePath);
     }
 }

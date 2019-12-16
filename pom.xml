@@ -31,6 +31,22 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gpg.executable>gpg2</gpg.executable>
     </properties>
+    <!--远程仓库-->
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://maven.guohualife.com:8081/repository/gh-group/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -85,6 +101,12 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.60</version>
+        </dependency>
+        <!--html生成pdf模板-->
+        <dependency>
+            <groupId>com.guohualife.template</groupId>
+            <artifactId>gh-template-client</artifactId>
+            <version>1.0.3 </version>
         </dependency>
     </dependencies>
     <build>

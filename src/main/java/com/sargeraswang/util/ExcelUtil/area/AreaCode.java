@@ -1,4 +1,4 @@
-package com.sargeraswang.util.ExcelUtil.vo.area;
+package com.sargeraswang.util.ExcelUtil.area;
 
 import java.util.ArrayList;
 import java.util.List;

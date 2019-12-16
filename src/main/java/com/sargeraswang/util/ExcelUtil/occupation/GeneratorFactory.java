@@ -91,8 +91,6 @@ public abstract class GeneratorFactory {
                 break;
 
         }
-
-
         if (filePath == null || "".equals(filePath)) {
             throw new RuntimeException("文件路径为空！");
         }

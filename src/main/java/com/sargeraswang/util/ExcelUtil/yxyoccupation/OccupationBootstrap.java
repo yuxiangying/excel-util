@@ -15,7 +15,7 @@ import java.util.List;
 public class OccupationBootstrap {
 
     public static void main(String[] args) {
-        int rateCode = RateFactory.RATE_HKAEXZL;//修改此处，得到不同的模板
+        int rateCode = OccupationFactory.RATE_HKAEXZL;//修改此处，得到不同的模板
         String fileName = RateFactory.getRateFile(rateCode);
         String fileTemplatePath = "D:/java/guohua/ExcelUtil/excel/rate/template/"+fileName+"模板.xlsx";
         String outFilePath = "D:/java/guohua/ExcelUtil/excel/rate/"+fileName+".xlsx";

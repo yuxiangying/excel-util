@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.beans.PropertyDescriptor;
 import java.io.*;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -87,9 +88,10 @@ public class PickFactorOfRate {
                         clmMap.put(fieldName, fieldValue);
                     }
                 }
-                String age = clmMap.get("投保年龄");
+                /*String age = clmMap.get("年龄");
                 String sex = clmMap.get("性别");
                 String insPeriod = clmMap.get("保险期间");
+
                 for (String payPeriodTile: payPeriodTiles){
                     if(clmMap.containsKey(payPeriodTile)){
                         RateDTO rateDTO = new RateDTO();
@@ -106,7 +108,73 @@ public class PickFactorOfRate {
                             rateDTOMap.put(payPeriodTile,rateDTOS1);
                         }
                     }
+                }*/
+                //改造更灵活
+                for (String payPeriodTile: payPeriodTiles){
+                    if(clmMap.containsKey(payPeriodTile)){
+                        RateDTO rateDTO = new RateDTO();
+                        for (int k = 0; k<columnMap.size();k++){ //set除缴费期间和费率的值
+                            Map<String,String> celMap = columnMap.get(k);
+                            for (Map.Entry<String, String> entry: celMap.entrySet()){
+                                if(!(entry.getKey().equals("PayPeriod") || entry.getKey().equals("Rate"))){
+                                    // 此处应该判断beanObj,property不为null
+                                    PropertyDescriptor pd = new PropertyDescriptor((new StringBuilder()).append(Character.toLowerCase(entry.getKey().charAt(0)))
+                                            .append(entry.getKey().substring(1)).toString(), rateDTO.getClass());
+                                    Method setMethod = pd.getWriteMethod();
+                                    if(setMethod != null){
+                                        setMethod.invoke(rateDTO,clmMap.get(entry.getValue()));
+                                    }
+                                }
+                            }
+                        }
+                        rateDTO.setPayPeriod(payPeriodTile);
+                        rateDTO.setRate(clmMap.get(payPeriodTile));
+                        if (rateDTOMap.containsKey(payPeriodTile)){
+                            rateDTOMap.get(payPeriodTile).add(rateDTO);
+                        }else {
+                            List<RateDTO> rateDTOS1 = new ArrayList<>();
+                            rateDTOS1.add(rateDTO);
+                            rateDTOMap.put(payPeriodTile,rateDTOS1);
+                        }
+                    }
                 }
+                //年龄是范围的情况
+                /*for (String payPeriodTile: payPeriodTiles){
+                    if(clmMap.containsKey(payPeriodTile)){
+                        String[] ageValue = clmMap.get("年龄").split("-");
+                        if(ageValue.length>1){
+                            int ageStart = Integer.parseInt(ageValue[0]);
+                            int ageEnd = Integer.parseInt(ageValue[1]);
+                            for(int age = ageStart;age<=ageEnd;age++){
+                                RateDTO rateDTOAge = new RateDTO();
+                                for (int k = 0; k<columnMap.size();k++){ //set除缴费期间和费率的值
+                                    Map<String,String> celMap = columnMap.get(k);
+                                    for (Map.Entry<String, String> entry: celMap.entrySet()){
+                                        if(!(entry.getKey().equals("PayPeriod") || entry.getKey().equals("Rate") || entry.getKey().equals("Age"))){
+                                            // 此处应该判断beanObj,property不为null
+                                            PropertyDescriptor pd = new PropertyDescriptor((new StringBuilder()).append(Character.toLowerCase(entry.getKey().charAt(0)))
+                                                    .append(entry.getKey().substring(1)).toString(), rateDTOAge.getClass());
+                                            Method setMethod = pd.getWriteMethod();
+                                            if(setMethod != null){
+                                                setMethod.invoke(rateDTOAge,clmMap.get(entry.getValue()));
+                                            }
+                                        }
+                                    }
+                                }
+                                rateDTOAge.setAge(String.valueOf(age));
+                                rateDTOAge.setPayPeriod(payPeriodTile);
+                                rateDTOAge.setRate(clmMap.get(payPeriodTile));
+                                if (rateDTOMap.containsKey(payPeriodTile)){
+                                    rateDTOMap.get(payPeriodTile).add(rateDTOAge);
+                                }else {
+                                    List<RateDTO> rateDTOS1 = new ArrayList<>();
+                                    rateDTOS1.add(rateDTOAge);
+                                    rateDTOMap.put(payPeriodTile,rateDTOS1);
+                                }
+                            }
+                        }
+                    }
+                }*/
             }
             for (String payPeriodTile: payPeriodTiles){
                 if (rateDTOMap.containsKey(payPeriodTile)){
@@ -117,7 +185,8 @@ public class PickFactorOfRate {
             }
 
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println(fileTemplatePath+"解析失败"+e.getMessage());
+            e.printStackTrace();
         }
 
         return rateDTOS;
@@ -157,7 +226,7 @@ public class PickFactorOfRate {
            fileOutputStream.close();
            System.out.println(outFilePath+"成功！");
        }catch (Exception e){
-           System.err.println(outFilePath+e.getMessage());
+           System.err.println(outFilePath+"导出失败"+e.getMessage());
        }
    }
 

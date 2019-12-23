@@ -11,6 +11,10 @@ public class RateDTO {
     private String payPeriod;//交费期间
     private String insPeriod;//保险期间
     private String age;//年龄
+    private String getPeriod;//领取期间
+    private String sIFlag;//有无社保
+    private String amount;//保险金额
+    private String mult;//份数
     private String rate;//费率
 
     public String getSex() {
@@ -35,6 +39,46 @@ public class RateDTO {
 
     public void setInsPeriod(String insPeriod) {
         this.insPeriod = insPeriod;
+    }
+
+    public String getGetPeriod() {
+        return getPeriod;
+    }
+
+    public void setGetPeriod(String getPeriod) {
+        this.getPeriod = getPeriod;
+    }
+
+    public String getSocialSecurityFlag() {
+        return sIFlag;
+    }
+
+    public void setSocialSecurityFlag(String sIFlag) {
+        this.sIFlag = sIFlag;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getSIFlag() {
+        return sIFlag;
+    }
+
+    public void setSIFlag(String sIFlag) {
+        this.sIFlag = sIFlag;
+    }
+
+    public String getMult() {
+        return mult;
+    }
+
+    public void setMult(String mult) {
+        this.mult = mult;
     }
 
     public String getAge() {

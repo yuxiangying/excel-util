@@ -23,6 +23,8 @@ public class CashValueFactory {
 
     public final static int CASHVALUE_BNAXJ = 6;
 
+    public final static int CASHVALUE_BNADAPPNT = 7;
+
     public static String getRateFile(int cashValueCode) {
         String filePath = null;
         switch (cashValueCode) {
@@ -47,9 +49,22 @@ public class CashValueFactory {
             case CASHVALUE_BNAXJ:
                 filePath = "百年附加欣逸两全保险现金价值表";
                 break;
+            case CASHVALUE_BNADAPPNT:
+                filePath = "10 百年附加投保人豁免保险费重大疾病保险（2018版） 现金价值表（全表）";
+                break;
 
         }
         return filePath;
+    }
+    public static String getColumnTitle(int rateCode) {
+        String columnTitle = null;
+        switch (rateCode) {
+            case CASHVALUE_TEMPLATE:
+                /*columnTitle = "PayPeriod:缴费期间,Age:年龄,PolicyYear:保单年度,InsPeriod:保险期间,CVRate:现金价值,Sa0:基本保额金额,Sex:性别";*/
+                columnTitle = "PayPeriod:缴费期间,InsPeriod:保险期间,Age:年龄,PolicyYear:保单年度,Sex:性别,CVRate:现金价值,Sa0:基本保额金额";
+                break;
+        }
+        return columnTitle;
     }
     /*
      * @Description: TODO(初始化实体)
@@ -74,6 +89,8 @@ public class CashValueFactory {
                 return new PickFactorOfCashValue(4,10324,0,5,columnTitle);
             case CASHVALUE_BNAXJ:
                 return new PickFactorOfCashValue(5,46521,0,5,columnTitle);
+            case CASHVALUE_BNADAPPNT:
+                return new PickFactorOfCashValue(4,15536,0,5,columnTitle);
         }
         return null;
     }

@@ -26,6 +26,7 @@ public class RateFactory {
     public final static int RATE_HKADBB = 6;
 
     public final static int RATE_HKAEXZL = 7;*/
+    public final static int RATE_XTRY = 33;
     //=====长城
     public final static int RATE_CCADHS = 1;
     public final static int RATE_CCADJFRS = 2;
@@ -57,6 +58,30 @@ public class RateFactory {
     //=====长生
     public final static int RATE_CSFZX = 29;
 
+    //=====百年
+    public final static int RATE_BNADAPPNT = 30;
+
+    //=====信泰
+    public final static int RATE_XTQWRS = 31;
+
+    //=====百年
+    public final static int RATE_BNADAKB = 32;
+
+    //=====阳光人寿
+    public final static int RATE_YGXSB = 34;
+
+    //=====临时现价表 中英
+    public final static int CASHVALUE_ZYBJK= 35;
+    public final static int CASHVALUE_ZYADBWSX= 37;
+    public final static int CASHVALUE_ZYLXB= 38;
+    public final static int CASHVALUE_ZYXXSJ= 39;
+
+    public final static int CASHVALUE_ZYADAPPNT= 36;
+
+    //在家办公
+    public final static int RATE_CS1 = 40;
+    public final static int RATE_CS2 = 41;
+    public final static int RATE_CS3 = 42;
     public static String getRateFile(int rateCode) {
         String filePath = null;
         switch (rateCode) {
@@ -84,6 +109,9 @@ public class RateFactory {
             case RATE_HKAEXZL:
                 filePath = "03_弘康附加恶性肿瘤疾病保险费率表";
                 break;*/
+            case RATE_XTRY:
+                filePath = "信泰如意享（六福版）养老年金保险基本保险金额表";
+                break;
             //=====长城
             case RATE_CCADHS:
                 filePath = "1长城附加鸿盛两全保险（分红型，2017）费率表";
@@ -161,7 +189,48 @@ public class RateFactory {
             case RATE_CSFZX:
                 filePath = "1长生长生福尊享重大疾病保险费率表";
                 break;
+            //=====百年
+            case RATE_BNADAPPNT:
+                filePath = "05 百年附加投保人豁免保险费重大疾病保险（2018版） 费率表";
+                break;
+            //=====信泰
+            case RATE_XTQWRS:
+                filePath = "信泰发〔2019〕765号_附件_附件2-信泰千万人生（2020）年金保险基本保险金额表";
+                break;
+            //=====百年
+            case RATE_BNADAKB:
+                filePath = "百年附加安康保住院医疗保险费率表";
+                break;
+            //=====阳光人寿
+            case RATE_YGXSB:
+                filePath = "阳光人寿孝顺保恶性肿瘤疾病保险费率表";
+                break;
+            //=====临时现价表 中英
+            case CASHVALUE_ZYBJK:
+                filePath = "1中英人寿附加贝健康重大疾病保险现金价值表";
+                break;
 
+            case CASHVALUE_ZYADBWSX:
+                filePath = "2中英人寿附加百万随行意外伤害住院津贴医疗保险现金价值表";
+                break;
+            case CASHVALUE_ZYLXB:
+                filePath = "3中英人寿乐相伴两全保险现金价值表";
+                break;
+            case CASHVALUE_ZYXXSJ:
+                filePath = "4中英人寿鑫玺世家终身寿险现金价值表";
+                break;
+            case CASHVALUE_ZYADAPPNT:
+                filePath = "5中英人寿附加投保人保费豁免重大疾病保险现金价值表";
+                break;
+            case RATE_CS1:
+                filePath = "1长生附加鑫康泰两全保险保险费率表";
+                break;
+            case RATE_CS2:
+                filePath = "2长生附加鑫康泰重大疾病保险保险费率表";
+                break;
+            case RATE_CS3:
+                filePath = "3长生鑫康泰养老年金保险保险费率表";
+                break;
         }
         return filePath;
     }
@@ -170,7 +239,10 @@ public class RateFactory {
         String columnTitle = null;
         switch (rateCode) {
             case RATE_TEMPLATE:
-                columnTitle = "Sex:性别,PayPeriod:缴费期间,InsPeriod:保险期间,Age:年龄,Rate:费率";
+                columnTitle = "Sex:性别,Age:年龄,InsPeriod:保险期间,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_XTRY:
+                columnTitle = "Sex:性别,PayPeriod:缴费期间,GetPeriod:领取年龄,Age:年龄,Rate:费率";
                 break;
             /*case RATE_XTZJ:
                 filePath = "信泰百万守护（2019）重大疾病保险费率表";
@@ -269,6 +341,48 @@ public class RateFactory {
             case RATE_CSFZX:
                 columnTitle = "Sex:性别,PayPeriod:缴费期间,InsPeriod:保险期间,Age:年龄,Rate:费率";
                 break;
+            //=====百年
+            case RATE_BNADAPPNT:
+                columnTitle = "Sex:性别,PayPeriod:缴费期间,Age:年龄,Rate:费率";
+                break;
+            //=====信泰
+            case RATE_XTQWRS:
+                columnTitle = "Sex:性别,PayPeriod:缴费期间,Age:年龄,Rate:费率";
+                break;
+            //=====百年
+            case RATE_BNADAKB:
+                columnTitle = "Amount:保险金额,PayPeriod:有无社保,Age:年龄,Rate:费率";
+                break;
+            //=====阳光人寿
+            case RATE_YGXSB:
+                columnTitle = "Sex:性别,PayPeriod:缴费期间,Age:年龄,Rate:费率";
+                break;
+            //=====临时现价表 中英
+            case CASHVALUE_ZYBJK:
+                columnTitle = "PayPeriod:缴费期间,Sex:性别,Age:年龄,GetPeriod:保单年度,Rate:费率";
+                break;
+            case CASHVALUE_ZYADBWSX:
+                columnTitle = "Amount:缴费期间,InsPeriod:保险期间,Sex:性别,Age:年龄,PayPeriod:保单年度,Rate:费率";
+                break;
+            case CASHVALUE_ZYLXB:
+                columnTitle = "Amount:缴费期间,InsPeriod:保险期间,Sex:性别,Age:年龄,PayPeriod:保单年度,Rate:费率";
+                break;
+            case CASHVALUE_ZYXXSJ:
+                columnTitle = "Amount:缴费期间,InsPeriod:保险期间,Sex:性别,Age:年龄,PayPeriod:保单年度,Rate:费率";
+                break;
+            case CASHVALUE_ZYADAPPNT:
+                columnTitle = "InsPeriod:缴费期间,Sex:性别,Age:年龄,PayPeriod:保单年度,Rate:费率";
+                break;
+            case RATE_CS1:
+                columnTitle = "Sex:性别,Age:年龄,InsPeriod:保险期间,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_CS2:
+                columnTitle = "Sex:性别,Age:年龄,InsPeriod:保险期间,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_CS3:
+                columnTitle = "Sex:性别,Age:年龄,InsPeriod:保险期间,PayPeriod:缴费期间,Rate:费率";
+                break;
+
 
         }
         return columnTitle;
@@ -338,6 +452,15 @@ public class RateFactory {
                 //=====长生
             case RATE_CSFZX:
                 return new PickFactorOfRate(2,135,0,10,columnTitle);
+            //=====百年
+            case RATE_BNADAPPNT:
+                return new PickFactorOfRate(3,90,0,7,columnTitle);
+            //=====信泰
+            case RATE_XTQWRS:
+                return new PickFactorOfRate(3,146,0,4,columnTitle);
+            //=====百年
+            case RATE_BNADAKB:
+                return new PickFactorOfRate(3,36,0,3,columnTitle);
                 /*case RATE_XTZJ:
                 return new PickFactorOfRate(3,126,0,9,columnTitle);
             case RATE_XTLQ:
@@ -352,6 +475,28 @@ public class RateFactory {
                 return new PickFactorOfRate(3,136,0,22,columnTitle);
             case RATE_HKAEXZL:
                 return new PickFactorOfRate(3,136,0,22,columnTitle);*/
+            case RATE_XTRY:
+                return new PickFactorOfRate(3,449,0,7,columnTitle);
+            //=====阳光人寿
+            case RATE_YGXSB:
+                return new PickFactorOfRate(3,56,0,5,columnTitle);
+            //=====临时现价表 中英
+            case CASHVALUE_ZYBJK:
+                return new PickFactorOfRate(2,323,0,22,columnTitle);
+            case CASHVALUE_ZYADBWSX:
+                return new PickFactorOfRate(2,459,0,60,columnTitle);
+            case CASHVALUE_ZYLXB:
+                return new PickFactorOfRate(3,400,0,60,columnTitle);
+            case CASHVALUE_ZYXXSJ:
+                return new PickFactorOfRate(3,532,0,108,columnTitle);
+            case CASHVALUE_ZYADAPPNT:
+                return new PickFactorOfRate(3,2008,0,107,columnTitle);
+            case RATE_CS1:
+                return new PickFactorOfRate(3,116,0,7,columnTitle);
+            case RATE_CS2:
+                return new PickFactorOfRate(3,116,0,7,columnTitle);
+            case RATE_CS3:
+                return new PickFactorOfRate(3,116,0,7,columnTitle);
         }
         return null;
     }

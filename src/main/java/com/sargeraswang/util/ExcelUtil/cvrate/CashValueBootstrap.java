@@ -4,6 +4,7 @@ import com.sargeraswang.util.ExcelUtil.yxyrate.PickFactorOfRate;
 import com.sargeraswang.util.ExcelUtil.yxyrate.RateDTO;
 import com.sargeraswang.util.ExcelUtil.yxyrate.RateFactory;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,19 +16,23 @@ import java.util.List;
 public class CashValueBootstrap {
 
     public static void main(String[] args) {
-        int cashValueCode = CashValueFactory.CASHVALUE_BNAXJ;//修改此处，得到不同的模板
-        String fileName = CashValueFactory.getRateFile(cashValueCode);
-        String fileTemplatePath = "D:/java/guohua/ExcelUtil/excel/cvrate/template/"+fileName+"模板.xlsx";
-        String outFilePath = "D:/java/guohua/ExcelUtil/excel/cvrate/"+fileName+".xlsx";
-        String columnTitle = "PayPeriod:缴费期间,Age:年龄,Sex:性别,PolicyYear:保单年度,InsPeriod:保险期间,CVRate:现金价值,Sa0:基本保额金额";
-        try {
-            PickFactorOfCashValue pickFactorOfCashValue = CashValueFactory.getInstance(cashValueCode,columnTitle);
-            List<CashValueDTO> cashValueDTOS =  pickFactorOfCashValue.parseSheet(fileTemplatePath);
+//        int cashValueCode = CashValueFactory.CASHVALUE_TEMPLATE;//修改此处，得到不同的模板
+        List<Integer> cashValueCodes = Arrays.asList(0);
+        for(int cashValueCode: cashValueCodes){
+            String fileName = CashValueFactory.getRateFile(cashValueCode);
+            String columnTitle = CashValueFactory.getColumnTitle(cashValueCode);
+            String fileTemplatePath = "D:/java/guohua/ExcelUtil/excel/cvrate/template/"+fileName+"模板.xlsx";
+            String outFilePath = "D:/java/guohua/ExcelUtil/excel/cvrate/"+fileName+".xlsx";
+            try {
+                PickFactorOfCashValue pickFactorOfCashValue = CashValueFactory.getInstance(cashValueCode,columnTitle);
+                List<CashValueDTO> cashValueDTOS =  pickFactorOfCashValue.parseSheet(fileTemplatePath);
 
-            pickFactorOfCashValue.exportExcel(cashValueDTOS,outFilePath);
+                pickFactorOfCashValue.exportExcel(cashValueDTOS,outFilePath);
 
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
+
     }
 }

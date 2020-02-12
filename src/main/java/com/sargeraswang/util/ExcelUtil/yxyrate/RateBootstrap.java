@@ -17,24 +17,30 @@ import java.util.List;
 public class RateBootstrap {
 
     public static void main(String[] args) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
-        List<Integer> rateCodes = Arrays.asList(15,16,17,18,19);
+        List<Integer> rateCodes = Arrays.asList(41);
 
         for(int rateCode: rateCodes){
             //int rateCode = RateFactory.RATE_CCADHS;//修改此处，得到不同的模板
             String fileName = RateFactory.getRateFile(rateCode);
             String columnTitle = RateFactory.getColumnTitle(rateCode);
-        /*String fileTemplatePath = "D:/java/guohua/ExcelUtil/excel/rate/template/"+fileName+"模板.xlsx";
-        String outFilePath = "D:/java/guohua/ExcelUtil/excel/rate/"+fileName+".xlsx";*/
+        String fileTemplatePath = "D:/java/guohua/ExcelUtil/excel/rate/template/"+fileName+"模板.xlsx";
+        String outFilePath = "D:/java/guohua/ExcelUtil/excel/rate/"+fileName+".xlsx";
             //主险
             //String columnTitle = "Sex:性别,PayPeriod:缴费期间,InsPeriod:保险期间,Age:年龄,Rate:费率";
             //附加险
 //        String columnTitle = "Sex:性别,PayPeriod:缴费期间,Age:年龄,Rate:费率";
+            /*//==信泰
+            String fileTemplatePath = "D:/资料/国华人寿_企业管理平台/险种配置/信泰/信泰费率表生成模板/"+fileName+"模板.xlsx";
+            String outFilePath = "D:/资料/国华人寿_企业管理平台/险种配置/信泰/信泰费率表/"+fileName+".xlsx";*/
             //==长城
-            String fileTemplatePath = "D:/资料/国华人寿_企业管理平台/险种配置/长城产品资料/华瑞所需资料/Z长城产品费率表/模板/"+fileName+"模板.xlsx";
-            String outFilePath = "D:/资料/国华人寿_企业管理平台/险种配置/长城产品资料/华瑞所需资料/Z长城产品费率表/rate/"+fileName+".xlsx";
+            /*String fileTemplatePath = "D:/资料/国华人寿_企业管理平台/险种配置/长城产品资料/华瑞所需资料/Z长城产品费率表/模板/"+fileName+"模板.xlsx";
+            String outFilePath = "D:/资料/国华人寿_企业管理平台/险种配置/长城产品资料/华瑞所需资料/Z长城产品费率表/rate/"+fileName+".xlsx";*/
             //==中英
             /*String fileTemplatePath = "D:/资料/国华人寿_企业管理平台/险种配置/中英/中英费率表/模板/"+fileName+"模板.xlsx";
             String outFilePath = "D:/资料/国华人寿_企业管理平台/险种配置/中英/中英费率表/zy_rate/"+fileName+".xlsx";*/
+            /*//==百年
+            String fileTemplatePath = "D:/资料/国华人寿_企业管理平台/险种配置/百年/经代产品资料/5909百年附加投保人豁免保险费重大疾病保险（2018版)201906012/"+fileName+"模板.xlsx";
+            String outFilePath = "D:/资料/国华人寿_企业管理平台/险种配置/百年/经代产品资料/5909百年附加投保人豁免保险费重大疾病保险（2018版)201906012/"+fileName+".xlsx";*/
             try {
                 PickFactorOfRate pickFactorOfRate = RateFactory.getInstance(rateCode,columnTitle);
                 List<RateDTO> rateDTOS =  pickFactorOfRate.parseSheet(fileTemplatePath);

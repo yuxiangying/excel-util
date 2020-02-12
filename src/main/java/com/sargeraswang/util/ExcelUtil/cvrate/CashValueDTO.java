@@ -7,13 +7,13 @@ package com.sargeraswang.util.ExcelUtil.cvrate;
  * @date: 2019年12月03日 10:28
  **/
 public class CashValueDTO implements Cloneable{
-    private String age;
-    private String sex ;
-    private String payPeriod;
-    private String policyYear;
-    private String insPeriod;
-    private String cVRate;
-    private String sa0;
+    private String age;//年龄
+    private String sex ;//性别
+    private String payPeriod;//交费期间
+    private String policyYear;//保单年度
+    private String insPeriod;//保险期间
+    private String cVRate;//现金价值
+    private String sa0;//基本保额金额
 
     public String getAge() {
         return age;

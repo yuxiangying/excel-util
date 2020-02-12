@@ -49,7 +49,7 @@ public class PickFactorOfRate {
 
     public List<RateDTO> parseSheet(String fileTemplatePath){
         List<RateDTO>  rateDTOS = new ArrayList<>();
-        List<String> payPeriodTiles = new ArrayList<>();
+        List<String> secondTiles = new ArrayList<>();
         Map<String,List<RateDTO>> rateDTOMap = new HashMap<>();
         try {
             InputStream stream = new FileInputStream(fileTemplatePath);
@@ -71,13 +71,14 @@ public class PickFactorOfRate {
                     Cell secondCell = xssfSecondRow.getCell(j);
                     if(i == xssfStartRow.getRowNum() + 2){
                         if(secondCell != null && StringUtils.isNotBlank(secondCell.getStringCellValue().trim())){
-                            payPeriodTiles.add(secondCell.getStringCellValue().trim());
+                            secondTiles.add(secondCell.getStringCellValue().trim());
                         }
                     }
                     // 循环取出所有行的值
                     Cell contentCell = xssfRow.getCell(j);
                     String fieldName = "";
-                    String fieldValue = "";
+                    String fieldValue = "0";
+                    //改造前 start
                     if (contentCell != null && StringUtils.isNotBlank(contentCell.getStringCellValue().trim())) {
                         if (secondCell != null && StringUtils.isNotBlank(secondCell.getStringCellValue())) {
                             fieldName = secondCell.getStringCellValue().trim();
@@ -87,6 +88,18 @@ public class PickFactorOfRate {
                         fieldValue = contentCell.getStringCellValue().trim();
                         clmMap.put(fieldName, fieldValue);
                     }
+                    //改造前 end
+                    //改造后==现金价值表为空的时候，填充0 start
+                    /*if (contentCell != null && StringUtils.isNotBlank(contentCell.getStringCellValue().trim())) {
+                        fieldValue = contentCell.getStringCellValue().trim();
+                    }
+                    if (secondCell != null && StringUtils.isNotBlank(secondCell.getStringCellValue())) {
+                        fieldName = secondCell.getStringCellValue().trim();
+                    }else {
+                        fieldName = titleCell.getStringCellValue().trim();
+                    }
+                    clmMap.put(fieldName, fieldValue);*/
+                    //改造后==现金价值表为空的时候，填充0 end
                 }
                 /*String age = clmMap.get("年龄");
                 String sex = clmMap.get("性别");
@@ -110,31 +123,31 @@ public class PickFactorOfRate {
                     }
                 }*/
                 //改造更灵活
-                for (String payPeriodTile: payPeriodTiles){
-                    if(clmMap.containsKey(payPeriodTile)){
+                for (String secondTile: secondTiles){
+                    if(clmMap.containsKey(secondTile)){
                         RateDTO rateDTO = new RateDTO();
-                        for (int k = 0; k<columnMap.size();k++){ //set除缴费期间和费率的值
+                        for (int k = 0; k<columnMap.size()-1;k++){ //set除缴费期间和费率的值
                             Map<String,String> celMap = columnMap.get(k);
                             for (Map.Entry<String, String> entry: celMap.entrySet()){
-                                if(!(entry.getKey().equals("PayPeriod") || entry.getKey().equals("Rate"))){
                                     // 此处应该判断beanObj,property不为null
                                     PropertyDescriptor pd = new PropertyDescriptor((new StringBuilder()).append(Character.toLowerCase(entry.getKey().charAt(0)))
                                             .append(entry.getKey().substring(1)).toString(), rateDTO.getClass());
                                     Method setMethod = pd.getWriteMethod();
-                                    if(setMethod != null){
+                                    if(setMethod != null && k == columnMap.size()-2){
+                                        setMethod.invoke(rateDTO,secondTile);
+                                    }else if(setMethod != null){
                                         setMethod.invoke(rateDTO,clmMap.get(entry.getValue()));
                                     }
-                                }
                             }
                         }
-                        rateDTO.setPayPeriod(payPeriodTile);
-                        rateDTO.setRate(clmMap.get(payPeriodTile));
-                        if (rateDTOMap.containsKey(payPeriodTile)){
-                            rateDTOMap.get(payPeriodTile).add(rateDTO);
+//                        rateDTO.setPayPeriod(payPeriodTile);
+                        rateDTO.setRate(clmMap.get(secondTile));
+                        if (rateDTOMap.containsKey(secondTile)){
+                            rateDTOMap.get(secondTile).add(rateDTO);
                         }else {
                             List<RateDTO> rateDTOS1 = new ArrayList<>();
                             rateDTOS1.add(rateDTO);
-                            rateDTOMap.put(payPeriodTile,rateDTOS1);
+                            rateDTOMap.put(secondTile,rateDTOS1);
                         }
                     }
                 }
@@ -176,9 +189,9 @@ public class PickFactorOfRate {
                     }
                 }*/
             }
-            for (String payPeriodTile: payPeriodTiles){
-                if (rateDTOMap.containsKey(payPeriodTile)){
-                    for (RateDTO rateDTO:rateDTOMap.get(payPeriodTile)){
+            for (String secondTile: secondTiles){
+                if (rateDTOMap.containsKey(secondTile)){
+                    for (RateDTO rateDTO:rateDTOMap.get(secondTile)){
                         rateDTOS.add(rateDTO);
                     }
                 }

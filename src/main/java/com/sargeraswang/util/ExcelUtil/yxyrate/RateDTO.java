@@ -8,10 +8,10 @@ package com.sargeraswang.util.ExcelUtil.yxyrate;
  **/
 public class RateDTO {
     private String sex;//性别
-    private String payPeriod;//交费期间
+    private String payPeriod;//缴费期间
     private String insPeriod;//保险期间
     private String age;//年龄
-    private String getPeriod;//领取期间
+    private String getPeriod;//领取年龄
     private String sIFlag;//有无社保
     private String amount;//保险金额
     private String mult;//份数

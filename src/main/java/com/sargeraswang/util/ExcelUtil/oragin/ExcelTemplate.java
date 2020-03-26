@@ -3,8 +3,6 @@ package com.sargeraswang.util.ExcelUtil.oragin;
 import com.sargeraswang.util.ExcelUtil.occupation.GeneratorFactory;
 import com.sargeraswang.util.ExcelUtil.occupation.OccupationGenerator;
 import com.sargeraswang.util.ExcelUtil.util.JsonUtil;
-import com.sargeraswang.util.ExcelUtil.vo.area.AreaCode;
-import com.sargeraswang.util.ExcelUtil.vo.area.AreaExcel;
 import com.sargeraswang.util.ExcelUtil.vo.occupation.OccupationExcel;
 import com.sargeraswang.util.ExcelUtil.vo.occupation.OccupationGradeCode;
 import net.sf.json.JSONArray;
@@ -29,7 +27,7 @@ public class ExcelTemplate {
      * @param: [pathUrl：导出excel路径]
      * @return: void
      * @Author: yuxy_cyd
-     * @Date: 2019/11/22 14:29   
+     * @Date: 2019/11/22 14:29
      */
     public static void importOccupationExcel(String pathUrl) throws FileNotFoundException {
         File f = new File(pathUrl);
@@ -49,17 +47,17 @@ public class ExcelTemplate {
             boolean primaryClassifyFlag = false;
             boolean secondaryClassifyFlag = false;
 
-            for (OccupationGradeCode.PrimaryClassifyCode primaryClassifyCode: occupationGradeCode.getContent()){
-                if (primaryClassifyCode.getLabel().equals(occupationExcel.getPrimaryClassify().trim())){
+            for (OccupationGradeCode.PrimaryClassifyCode primaryClassifyCode : occupationGradeCode.getContent()) {
+                if (primaryClassifyCode.getLabel().equals(occupationExcel.getPrimaryClassify().trim())) {
                     primaryClassifyFlag = true;
-                    for (OccupationGradeCode.SecondaryClassifyCode secondaryClassifyCode: primaryClassifyCode.getChildren()){
-                        if(secondaryClassifyCode.getLabel().equals(occupationExcel.getSecondaryClassify().trim())){
+                    for (OccupationGradeCode.SecondaryClassifyCode secondaryClassifyCode : primaryClassifyCode.getChildren()) {
+                        if (secondaryClassifyCode.getLabel().equals(occupationExcel.getSecondaryClassify().trim())) {
                             secondaryClassifyFlag = true;
                             secondaryClassifyCode.getChildren().add(occupationCode);
                             break;
                         }
                     }
-                    if (!secondaryClassifyFlag){
+                    if (!secondaryClassifyFlag) {
                         OccupationGradeCode.SecondaryClassifyCode secondaryClassifyCode = new OccupationGradeCode.SecondaryClassifyCode();
                         secondaryClassifyCode.setLabel(occupationExcel.getSecondaryClassify().trim());
                         secondaryClassifyCode.getChildren().add(occupationCode);
@@ -69,7 +67,7 @@ public class ExcelTemplate {
                     break;
                 }
             }
-            if (!primaryClassifyFlag){
+            if (!primaryClassifyFlag) {
                 OccupationGradeCode.PrimaryClassifyCode primaryClassifyCode = new OccupationGradeCode.PrimaryClassifyCode();
                 primaryClassifyCode.setLabel(occupationExcel.getPrimaryClassify().trim());
 

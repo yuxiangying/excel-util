@@ -6,9 +6,9 @@ package com.sargeraswang.util.ExcelUtil.cvrate;
  * @Description:TODO(现金价值实体)
  * @date: 2019年12月03日 10:28
  **/
-public class CashValueDTO implements Cloneable{
+public class CashValueDTO implements Cloneable {
     private String age;//年龄
-    private String sex ;//性别
+    private String sex;//性别
     private String payPeriod;//交费期间
     private String policyYear;//保单年度
     private String insPeriod;//保险期间

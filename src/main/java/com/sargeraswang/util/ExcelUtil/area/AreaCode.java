@@ -37,7 +37,7 @@ public class AreaCode {
     }
 
     //省编码
-    public static class ProvinceCode{
+    public static class ProvinceCode {
         private String value;//编码
         private String text;//名称
         List<CityCode> children = new ArrayList<>();
@@ -68,7 +68,7 @@ public class AreaCode {
     }
 
     //市编码
-    public static class CityCode{
+    public static class CityCode {
         private String value;//编码
         private String text;//名称
         List<CountyCode> children = new ArrayList<>();
@@ -99,7 +99,7 @@ public class AreaCode {
     }
 
     //区县编码
-    public static class CountyCode{
+    public static class CountyCode {
         private String value;//编码
         private String text;//名称
 

@@ -71,17 +71,31 @@ public class RateFactory {
     public final static int RATE_YGXSB = 34;
 
     //=====临时现价表 中英
-    public final static int CASHVALUE_ZYBJK= 35;
-    public final static int CASHVALUE_ZYADBWSX= 37;
-    public final static int CASHVALUE_ZYLXB= 38;
-    public final static int CASHVALUE_ZYXXSJ= 39;
+    public final static int CASHVALUE_ZYBJK = 35;
+    public final static int CASHVALUE_ZYADBWSX = 37;
+    public final static int CASHVALUE_ZYLXB = 38;
+    public final static int CASHVALUE_ZYXXSJ = 39;
 
-    public final static int CASHVALUE_ZYADAPPNT= 36;
+    public final static int CASHVALUE_ZYADAPPNT = 36;
 
     //在家办公
     public final static int RATE_CS1 = 40;
     public final static int RATE_CS2 = 41;
     public final static int RATE_CS3 = 42;
+    //====临时长生现价
+    public final static int CASHVALUE_CSCSFZJ = 43;
+    public final static int CASHVALUE_CSCSFDS = 44;
+    //====如意人生守护
+    public final static int RATE_WMRS1 = 45;
+    public final static int RATE_WMRS3 = 46;
+
+    public final static int RATE_BNKXB = 47;
+
+    public final static int RATE_XTRYZ = 48;
+    public final static int RATE_CSFXLL = 49;
+    public final static int RATE_CSFJYS = 50;
+    public final static int RATE_FXZYB = 51;
+
     public static String getRateFile(int rateCode) {
         String filePath = null;
         switch (rateCode) {
@@ -172,7 +186,7 @@ public class RateFactory {
                 filePath = "19长城附加住院医疗保险（2007）费率表";
                 break;
 
-                //=====中英
+            //=====中英
             case RATE_ZYADBJK:
                 filePath = "1中英人寿附加贝健康重大疾病保险费率表";
                 break;
@@ -230,6 +244,44 @@ public class RateFactory {
                 break;
             case RATE_CS3:
                 filePath = "3长生鑫康泰养老年金保险保险费率表";
+                break;
+            //====临时长生现价
+            case CASHVALUE_CSCSFZJ:
+                //filePath = "1长生长生福重大疾病保险现金价值表";
+                //filePath = "4长生长生福（御享版）重大疾病保险现金价值表(大童快保)";
+                filePath = "2长生附加投保人豁免保险费重大疾病保险B款现金价值表";
+                break;
+            case CASHVALUE_CSCSFDS:
+                filePath = "3长生福多寿年金保险现金价值表";
+                break;
+            //====如意人生守护
+            case RATE_WMRS1:
+//                filePath = "1信泰完美人生守护（尊享版）重大疾病保险费率表（不含可选责任）";
+                filePath = "2信泰完美人生守护（尊享版）重大疾病保险费率表（含可选责任）";
+                break;
+            case RATE_WMRS3:
+//                filePath = "3信泰附加完美人生守护（尊享版）两全保险费率表（不含可选责任）";
+                filePath = "4信泰附加完美人生守护（尊享版）两全保险费率表（含可选责任）";
+                break;
+            case RATE_BNKXB:
+//                filePath = "3信泰附加完美人生守护（尊享版）两全保险费率表（不含可选责任）";
+                filePath = "5918百年康欣保 终身重大疾病保险 费率表";
+                break;
+            case RATE_XTRYZ:
+                filePath = "信泰如意尊费率表";
+                break;
+            case RATE_CSFXLL:
+//                filePath = "长生福享连连费率表";
+                filePath = "2-3.国华附加年金保险（2020版）费率表";
+                break;
+            case RATE_CSFJYS:
+                filePath = "长生福运金生费率表";
+                break;
+            case RATE_FXZYB:
+                filePath = "1复星联合超越保医疗保险费率表（计划一+全计划）";
+//                filePath = "2复星联合超越保医疗保险费率表（计划一+一般+重疾）";
+//                filePath = "3复星联合超越保医疗保险费率表（计划二+全计划）";
+//                filePath = "4复星联合超越保医疗保险费率表（计划二+一般+重疾）";
                 break;
         }
         return filePath;
@@ -382,11 +434,39 @@ public class RateFactory {
             case RATE_CS3:
                 columnTitle = "Sex:性别,Age:年龄,InsPeriod:保险期间,PayPeriod:缴费期间,Rate:费率";
                 break;
-
+            //====临时长生现价
+            case CASHVALUE_CSCSFZJ:
+                columnTitle = "PayPeriod:缴费期间,Sex:性别,GetPeriod:保单年度末,Age:年龄,Rate:费率";
+                break;
+            case CASHVALUE_CSCSFDS:
+                columnTitle = "PayPeriod:缴费期间,Sex:性别,Mult:保单年度末,GetPeriod:领取年龄,Age:年龄,Rate:费率";
+                break;
+            //====如意人生守护
+            case RATE_WMRS1:
+                columnTitle = "Sex:性别,Age:投保年龄,InsPeriod:保险期间,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_WMRS3:
+                columnTitle = "Sex:性别,Age:投保年龄,InsPeriod:保险期间,MainRiskInsPeriod:主险保险期间,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_BNKXB:
+                columnTitle = "Sex:性别,Age:投保年龄,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_XTRYZ:
+                columnTitle = "Sex:性别,Age:投保年龄,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_CSFXLL:
+                columnTitle = "Sex:性别,Age:投保年龄,InsPeriod:保险期间,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_CSFJYS:
+                columnTitle = "Sex:性别,Age:投保年龄,GetPeriod:领取年龄,PayPeriod:缴费期间,Rate:费率";
+                break;
+            case RATE_FXZYB:
+                columnTitle = "Age:投保年龄,SIFlag:有无社保,PayPeriod:缴费期间,Rate:费率";
 
         }
         return columnTitle;
     }
+
     /*
      * @Description: TODO(初始化实体)
      * @param: [rateCode, columnTitle]
@@ -394,73 +474,73 @@ public class RateFactory {
      * @Author: yuxy_cyd
      * @Date: 2019/12/13 9:57
      */
-    public static PickFactorOfRate getInstance(int rateCode, String columnTitle){
+    public static PickFactorOfRate getInstance(int rateCode, String columnTitle) {
         switch (rateCode) {
             case RATE_TEMPLATE:
-                return new PickFactorOfRate(3,126,0,9,columnTitle);
+                return new PickFactorOfRate(3, 126, 0, 9, columnTitle);
             //==长城
             case RATE_CCADHS:
-                return new PickFactorOfRate(2,523,0,7,columnTitle);
+                return new PickFactorOfRate(2, 523, 0, 7, columnTitle);
             case RATE_CCADJFRS:
-                return new PickFactorOfRate(2,339,0,9,columnTitle);
+                return new PickFactorOfRate(2, 339, 0, 9, columnTitle);
             case RATE_CCADJKRS:
-                return new PickFactorOfRate(2,767,0,11,columnTitle);
+                return new PickFactorOfRate(2, 767, 0, 11, columnTitle);
             case RATE_CCAPPNT:
-                return new PickFactorOfRate(2,89,0,29,columnTitle);
+                return new PickFactorOfRate(2, 89, 0, 29, columnTitle);
             case RATE_CCHS:
-                return new PickFactorOfRate(2,523,0,7,columnTitle);
+                return new PickFactorOfRate(2, 523, 0, 7, columnTitle);
             case RATE_CCJFRS:
-                return new PickFactorOfRate(2,125,0,9,columnTitle);
+                return new PickFactorOfRate(2, 125, 0, 9, columnTitle);
             case RATE_CCJK:
-                return new PickFactorOfRate(2,491,0,10,columnTitle);
+                return new PickFactorOfRate(2, 491, 0, 10, columnTitle);
             case RATE_CCJXB:
-                return new PickFactorOfRate(2,349,0,8,columnTitle);
+                return new PickFactorOfRate(2, 349, 0, 8, columnTitle);
             case RATE_CCJFT:
-                return new PickFactorOfRate(2,135,0,7,columnTitle);
+                return new PickFactorOfRate(2, 135, 0, 7, columnTitle);
             case RATE_CCYXWL:
-                return new PickFactorOfRate(2,29,0,6,columnTitle);
+                return new PickFactorOfRate(2, 29, 0, 6, columnTitle);
             case RATE_CCADAPPNT:
-                return new PickFactorOfRate(2,757,0,10,columnTitle);
+                return new PickFactorOfRate(2, 757, 0, 10, columnTitle);
             case RATE_CCJL:
-                return new PickFactorOfRate(2,125,0,5,columnTitle);
+                return new PickFactorOfRate(2, 125, 0, 5, columnTitle);
             case RATE_CCJCYS:
-                return new PickFactorOfRate(2,115,0,5,columnTitle);
+                return new PickFactorOfRate(2, 115, 0, 5, columnTitle);
             case RATE_CCYSS:
-                return new PickFactorOfRate(2,379,0,6,columnTitle);
+                return new PickFactorOfRate(2, 379, 0, 6, columnTitle);
 
             case RATE_CCADYCYL:
-                return new PickFactorOfRate(2,27,0,3,columnTitle);
+                return new PickFactorOfRate(2, 27, 0, 3, columnTitle);
             case RATE_CCYXWY:
-                return new PickFactorOfRate(2,55,0,3,columnTitle);
+                return new PickFactorOfRate(2, 55, 0, 3, columnTitle);
             case RATE_CCADAXZY:
-                return new PickFactorOfRate(2,27,0,7,columnTitle);
+                return new PickFactorOfRate(2, 27, 0, 7, columnTitle);
             case RATE_CCADZYGF:
-                return new PickFactorOfRate(2,14,0,6,columnTitle);
+                return new PickFactorOfRate(2, 14, 0, 6, columnTitle);
             case RATE_CCADZY:
-                return new PickFactorOfRate(2,15,0,1,columnTitle);
+                return new PickFactorOfRate(2, 15, 0, 1, columnTitle);
 
             //=====中英
             case RATE_ZYADBJK:
-                return new PickFactorOfRate(2,83,0,6,columnTitle);
+                return new PickFactorOfRate(2, 83, 0, 6, columnTitle);
             case RATE_ZYADBWSX:
-                return new PickFactorOfRate(2,175,0,5,columnTitle);
+                return new PickFactorOfRate(2, 175, 0, 5, columnTitle);
             case RATE_ZYLXB:
-                return new PickFactorOfRate(2,155,0,5,columnTitle);
+                return new PickFactorOfRate(2, 155, 0, 5, columnTitle);
             case RATE_ZYYXSJ:
-                return new PickFactorOfRate(2,145,0,6,columnTitle);
+                return new PickFactorOfRate(2, 145, 0, 6, columnTitle);
 
-                //=====长生
+            //=====长生
             case RATE_CSFZX:
-                return new PickFactorOfRate(2,135,0,10,columnTitle);
+                return new PickFactorOfRate(2, 135, 0, 10, columnTitle);
             //=====百年
             case RATE_BNADAPPNT:
-                return new PickFactorOfRate(3,90,0,7,columnTitle);
+                return new PickFactorOfRate(3, 90, 0, 7, columnTitle);
             //=====信泰
             case RATE_XTQWRS:
-                return new PickFactorOfRate(3,146,0,4,columnTitle);
+                return new PickFactorOfRate(3, 146, 0, 4, columnTitle);
             //=====百年
             case RATE_BNADAKB:
-                return new PickFactorOfRate(3,36,0,3,columnTitle);
+                return new PickFactorOfRate(3, 36, 0, 3, columnTitle);
                 /*case RATE_XTZJ:
                 return new PickFactorOfRate(3,126,0,9,columnTitle);
             case RATE_XTLQ:
@@ -476,27 +556,51 @@ public class RateFactory {
             case RATE_HKAEXZL:
                 return new PickFactorOfRate(3,136,0,22,columnTitle);*/
             case RATE_XTRY:
-                return new PickFactorOfRate(3,449,0,7,columnTitle);
+                return new PickFactorOfRate(3, 449, 0, 7, columnTitle);
             //=====阳光人寿
             case RATE_YGXSB:
-                return new PickFactorOfRate(3,56,0,5,columnTitle);
+                return new PickFactorOfRate(3, 56, 0, 5, columnTitle);
             //=====临时现价表 中英
             case CASHVALUE_ZYBJK:
-                return new PickFactorOfRate(2,323,0,22,columnTitle);
+                return new PickFactorOfRate(2, 323, 0, 22, columnTitle);
             case CASHVALUE_ZYADBWSX:
-                return new PickFactorOfRate(2,459,0,60,columnTitle);
+                return new PickFactorOfRate(2, 459, 0, 60, columnTitle);
             case CASHVALUE_ZYLXB:
-                return new PickFactorOfRate(3,400,0,60,columnTitle);
+                return new PickFactorOfRate(3, 400, 0, 60, columnTitle);
             case CASHVALUE_ZYXXSJ:
-                return new PickFactorOfRate(3,532,0,108,columnTitle);
+                return new PickFactorOfRate(3, 532, 0, 108, columnTitle);
             case CASHVALUE_ZYADAPPNT:
-                return new PickFactorOfRate(3,2008,0,107,columnTitle);
+                return new PickFactorOfRate(3, 2008, 0, 107, columnTitle);
             case RATE_CS1:
-                return new PickFactorOfRate(3,116,0,7,columnTitle);
+                return new PickFactorOfRate(3, 116, 0, 7, columnTitle);
             case RATE_CS2:
-                return new PickFactorOfRate(3,116,0,7,columnTitle);
+                return new PickFactorOfRate(3, 116, 0, 7, columnTitle);
             case RATE_CS3:
-                return new PickFactorOfRate(3,116,0,7,columnTitle);
+                return new PickFactorOfRate(3, 116, 0, 7, columnTitle);
+            //====临时长生现价
+            case CASHVALUE_CSCSFZJ:
+//                return new PickFactorOfRate(0, 1273, 0, 68, columnTitle);
+                return new PickFactorOfRate(0, 97, 0, 50, columnTitle);
+            case CASHVALUE_CSCSFDS:
+                return new PickFactorOfRate(0, 1681, 0, 69, columnTitle);
+            //====如意人生守护
+            case RATE_WMRS1:
+                return new PickFactorOfRate(3, 248, 0, 7, columnTitle);
+            case RATE_WMRS3:
+                return new PickFactorOfRate(3, 392, 0, 8, columnTitle);
+            case RATE_BNKXB:
+                return new PickFactorOfRate(4, 127, 0, 7, columnTitle);
+
+            case RATE_XTRYZ:
+                return new PickFactorOfRate(3, 166, 0, 7, columnTitle);
+            case RATE_CSFXLL:
+//                return new PickFactorOfRate(3, 268, 0, 4, columnTitle);
+                return new PickFactorOfRate(3, 132, 0, 9, columnTitle);
+            case RATE_CSFJYS:
+                return new PickFactorOfRate(3, 421, 0, 8, columnTitle);
+            case RATE_FXZYB:
+                return new PickFactorOfRate(0, 25, 0, 2, columnTitle);
+
         }
         return null;
     }

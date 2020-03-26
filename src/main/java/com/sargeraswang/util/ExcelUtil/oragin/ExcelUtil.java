@@ -52,13 +52,13 @@ public class ExcelUtil {
      * 获取cell类型的文字描述
      *
      * @param cellType <pre>
-     *                                 CellType.BLANK
-     *                                 CellType.BOOLEAN
-     *                                 CellType.ERROR
-     *                                 CellType.FORMULA
-     *                                 CellType.NUMERIC
-     *                                 CellType.STRING
-     *                                 </pre>
+     *                                                 CellType.BLANK
+     *                                                 CellType.BOOLEAN
+     *                                                 CellType.ERROR
+     *                                                 CellType.FORMULA
+     *                                                 CellType.NUMERIC
+     *                                                 CellType.STRING
+     *                                                 </pre>
      * @return
      */
     private static String getCellTypeByInt(CellType cellType) {

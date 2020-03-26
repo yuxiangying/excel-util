@@ -21,7 +21,7 @@ public class OccupationGradeCode {
     }
 
     //大分类编码
-    public static class PrimaryClassifyCode{
+    public static class PrimaryClassifyCode {
         private String label;//职业名称
         List<SecondaryClassifyCode> children = new ArrayList<>();
 
@@ -41,8 +41,9 @@ public class OccupationGradeCode {
             this.children = children;
         }
     }
+
     //中分类编码
-    public static class SecondaryClassifyCode{
+    public static class SecondaryClassifyCode {
         private String label;//职业名称
         List<OccupationCode> children = new ArrayList<>();
 
@@ -62,8 +63,9 @@ public class OccupationGradeCode {
             this.children = children;
         }
     }
+
     //职业编码
-    public static class OccupationCode{
+    public static class OccupationCode {
         private String code;//职业代码
         private String label;//职业名称
         private String grade;//职业等级

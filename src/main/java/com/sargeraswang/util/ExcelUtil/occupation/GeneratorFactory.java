@@ -25,6 +25,8 @@ public abstract class GeneratorFactory {
 
     public final static int INSURER_SHANGHAI = 8;
 
+    public final static int INSURER_HZ = 9;
+
 
     private GeneratorFactory() {
     }
@@ -51,6 +53,8 @@ public abstract class GeneratorFactory {
                 return new OccupationGeneratorBaiNian(3, 2161);
             case INSURER_SHANGHAI:
                 return new OccupationGeneratorShangHai(2, 2045);
+            case INSURER_HZ:
+                return new OccupationGeneratorShangHai(2, 1213);
         }
         return null;
     }
@@ -87,7 +91,10 @@ public abstract class GeneratorFactory {
                 filePath = "/Users/wangpeng/git/GitHub/ExcelUtil/excel/百年人寿.xlsx";
                 break;
             case INSURER_SHANGHAI:
-                filePath = "D:/java/guohua/ExcelUtil/excel/上海人寿.xlsx";
+                filePath = "C:/ideaProject/guohua/excel-util/excel/上海人寿.xlsx";
+                break;
+            case INSURER_HZ:
+                filePath = "C:/ideaProject/guohua/excel-util/excel/众惠职业编码new.xlsx";
                 break;
 
         }
@@ -135,6 +142,9 @@ public abstract class GeneratorFactory {
                 break;
             case INSURER_SHANGHAI:
                 fileName = "上海人寿职业编码";
+                break;
+            case INSURER_HZ:
+                fileName = "众惠职业编码new";
                 break;
 
         }

@@ -32,17 +32,17 @@ public class PickFactorOfArea {
             boolean provinceFlag = false;
             boolean cityFlag = false;
 
-            for (AreaCode.ProvinceCode provinceCode: areaCode.getContent().get(0)){
-                if (provinceCode.getValue().equals(areaExcel.getProvinceCode().trim())){
+            for (AreaCode.ProvinceCode provinceCode : areaCode.getContent().get(0)) {
+                if (provinceCode.getValue().equals(areaExcel.getProvinceCode().trim())) {
                     provinceFlag = true;
-                    for (AreaCode.CityCode cityCode: provinceCode.getChildren()){
-                        if(cityCode.getValue().equals(areaExcel.getCityCode().trim())){
+                    for (AreaCode.CityCode cityCode : provinceCode.getChildren()) {
+                        if (cityCode.getValue().equals(areaExcel.getCityCode().trim())) {
                             cityFlag = true;
                             cityCode.getChildren().add(countyCode);
                             break;
                         }
                     }
-                    if (!cityFlag){
+                    if (!cityFlag) {
                         AreaCode.CityCode cityCode = new AreaCode.CityCode();
                         cityCode.setValue(areaExcel.getCityCode().trim());
                         cityCode.setText(areaExcel.getCityName().trim());
@@ -54,7 +54,7 @@ public class PickFactorOfArea {
                     break;
                 }
             }
-            if (!provinceFlag){
+            if (!provinceFlag) {
                 AreaCode.ProvinceCode provinceCode = new AreaCode.ProvinceCode();
                 provinceCode.setValue(areaExcel.getProvinceCode().trim());
                 provinceCode.setText(areaExcel.getProvinceName().trim());

@@ -56,6 +56,7 @@ public class OccupationFactory {
         }
         return filePath;
     }
+
     /*
      * @Description: TODO(初始化实体)
      * @param: [rateCode, columnTitle]
@@ -63,24 +64,24 @@ public class OccupationFactory {
      * @Author: yuxy_cyd
      * @Date: 2019/12/13 9:57
      */
-    public static PickFactorOfRate getInstance(int rateCode, String columnTitle){
+    public static PickFactorOfRate getInstance(int rateCode, String columnTitle) {
         switch (rateCode) {
             case RATE_TEMPLATE:
-                return new PickFactorOfRate(3,126,0,9,columnTitle);
+                return new PickFactorOfRate(3, 126, 0, 9, columnTitle);
             case RATE_XTZJ:
-                return new PickFactorOfRate(3,126,0,9,columnTitle);
+                return new PickFactorOfRate(3, 126, 0, 9, columnTitle);
             case RATE_XTLQ:
-                return new PickFactorOfRate(3,310,0,9,columnTitle);
+                return new PickFactorOfRate(3, 310, 0, 9, columnTitle);
             case RATE_XTBZJ:
-                return new PickFactorOfRate(3,126,0,9,columnTitle);
+                return new PickFactorOfRate(3, 126, 0, 9, columnTitle);
             case RATE_XTBLQ:
-                return new PickFactorOfRate(3,310,0,9,columnTitle);
+                return new PickFactorOfRate(3, 310, 0, 9, columnTitle);
             case RATE_XTRY:
-                return new PickFactorOfRate(3,449,0,7,columnTitle);
+                return new PickFactorOfRate(3, 449, 0, 7, columnTitle);
             case RATE_HKADBB:
-                return new PickFactorOfRate(3,136,0,22,columnTitle);
+                return new PickFactorOfRate(3, 136, 0, 22, columnTitle);
             case RATE_HKAEXZL:
-                return new PickFactorOfRate(3,136,0,22,columnTitle);
+                return new PickFactorOfRate(3, 136, 0, 22, columnTitle);
         }
         return null;
     }

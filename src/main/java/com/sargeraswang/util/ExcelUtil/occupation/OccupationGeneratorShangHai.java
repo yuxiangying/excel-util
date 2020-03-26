@@ -36,10 +36,11 @@ public class OccupationGeneratorShangHai extends ThreeLevelOccupationGenerator {
             String oneValue = cell1.getStringCellValue();
             String twoValue = cell2.getStringCellValue();
             String threeCode = cell3.getStringCellValue();
+//            String threeCode = String.format("%07d", Integer.parseInt(cell3.getStringCellValue()));
             String threeValue = cell4.getStringCellValue();
             String threeGrade = cell5.getStringCellValue();
             Integer threeGradeNum = Integer.parseInt(threeGrade);
-            if(threeGradeNum>=1 && threeGradeNum<=4){
+            if (threeGradeNum >= 1 && threeGradeNum <= 4) {
                 logger.info("当前行为:{},解析的值分别为:{}|{}|{}|{}", i, oneValue, twoValue, threeCode, threeValue);
 
                 if (notNull(oneValue)) {
@@ -67,7 +68,7 @@ public class OccupationGeneratorShangHai extends ThreeLevelOccupationGenerator {
                 SortMap<String, List<String>> midMapTemp = bigMap.get(oneCode + "#" + oneValueTemp);
 
                 List<String> listTemp = midMapTemp.get(twoCode + "#" + twoValueTemp);
-                listTemp.add(threeCode + "#" + threeValue+ "#" + threeGrade);
+                listTemp.add(threeCode + "#" + threeValue + "#" + threeGrade);
             }
         }
         return bigMap;

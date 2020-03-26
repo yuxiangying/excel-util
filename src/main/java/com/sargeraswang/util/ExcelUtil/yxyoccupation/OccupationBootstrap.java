@@ -17,19 +17,19 @@ public class OccupationBootstrap {
     public static void main(String[] args) {
         int rateCode = OccupationFactory.RATE_HKAEXZL;//修改此处，得到不同的模板
         String fileName = RateFactory.getRateFile(rateCode);
-        String fileTemplatePath = "D:/java/guohua/ExcelUtil/excel/rate/template/"+fileName+"模板.xlsx";
-        String outFilePath = "D:/java/guohua/ExcelUtil/excel/rate/"+fileName+".xlsx";
+        String fileTemplatePath = "D:/java/guohua/ExcelUtil/excel/rate/template/" + fileName + "模板.xlsx";
+        String outFilePath = "D:/java/guohua/ExcelUtil/excel/rate/" + fileName + ".xlsx";
         //主险
         //String columnTitle = "Sex:性别,PayPeriod:缴费期间,InsPeriod:保险期间,Age:年龄,Rate:费率";
         //附加险
         String columnTitle = "Sex:性别,PayPeriod:缴费期间,Age:年龄,Rate:费率";
         try {
-            PickFactorOfRate pickFactorOfRate = RateFactory.getInstance(rateCode,columnTitle);
-            List<RateDTO> rateDTOS =  pickFactorOfRate.parseSheet(fileTemplatePath);
+            PickFactorOfRate pickFactorOfRate = RateFactory.getInstance(rateCode, columnTitle);
+            List<RateDTO> rateDTOS = pickFactorOfRate.parseSheet(fileTemplatePath);
 
-            pickFactorOfRate.exportExcel(rateDTOS,outFilePath);
+            pickFactorOfRate.exportExcel(rateDTOS, outFilePath);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

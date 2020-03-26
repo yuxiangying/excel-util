@@ -9,7 +9,7 @@ public class Bootstrap {
 
     public static void main(String[] args) {
 
-        int insurerCode = GeneratorFactory.INSURER_SHANGHAI;
+        int insurerCode = GeneratorFactory.INSURER_HZ;
 
         OccupationGenerator generator = GeneratorFactory.getInstance(insurerCode);
         InputStream inputStream = GeneratorFactory.getOccupationFile(insurerCode);
@@ -17,7 +17,7 @@ public class Bootstrap {
         System.out.println(occupationJson);
         String fileName = GeneratorFactory.getOccupationFileName(insurerCode);
 
-        String outFilePath = "D:/java/guohua/ExcelUtil/excel/json" + File.separator + fileName + ".json";
+        String outFilePath = "C:/ideaProject/guohua/excel-util/excel/json" + File.separator + fileName + ".json";
         boolean flag = JsonUtil.createJsonFile(occupationJson, outFilePath);
     }
 }

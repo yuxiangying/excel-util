@@ -17,7 +17,7 @@ import java.util.List;
 public class RateBootstrap {
 
     public static void main(String[] args) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
-        List<Integer> rateCodes = Arrays.asList(51);
+        List<Integer> rateCodes = Arrays.asList(52);
 
         for (int rateCode : rateCodes) {
             //int rateCode = RateFactory.RATE_CCADHS;//修改此处，得到不同的模板

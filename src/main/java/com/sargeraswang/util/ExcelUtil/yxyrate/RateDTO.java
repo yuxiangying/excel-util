@@ -11,6 +11,7 @@ public class RateDTO {
     private String payPeriod;//缴费期间 1Y-2Y-10Y
     private String insPeriod;//保险期间 1Y-2Y-10Y
     private String mainRiskInsPeriod;//主险保险期间 1Y-2Y-10Y
+    private String mainRiskAmount;//主险保额
     private String age;//年龄 0-1-2
     private String getPeriod;//领取年龄
     private String sIFlag;//有无社保 Y-N
@@ -48,6 +49,14 @@ public class RateDTO {
 
     public void setMainRiskInsPeriod(String mainRiskInsPeriod) {
         this.mainRiskInsPeriod = mainRiskInsPeriod;
+    }
+
+    public String getMainRiskAmount() {
+        return mainRiskAmount;
+    }
+
+    public void setMainRiskAmount(String mainRiskAmount) {
+        this.mainRiskAmount = mainRiskAmount;
     }
 
     public String getGetPeriod() {

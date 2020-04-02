@@ -95,6 +95,7 @@ public class RateFactory {
     public final static int RATE_CSFXLL = 49;
     public final static int RATE_CSFJYS = 50;
     public final static int RATE_FXZYB = 51;
+    public final static int RATE_KTGRAZ = 52;
 
     public static String getRateFile(int rateCode) {
         String filePath = null;
@@ -283,6 +284,11 @@ public class RateFactory {
 //                filePath = "3复星联合超越保医疗保险费率表（计划二+全计划）";
 //                filePath = "4复星联合超越保医疗保险费率表（计划二+一般+重疾）";
                 break;
+            case RATE_KTGRAZ:
+//                filePath = "1个人癌症医疗保险金费率表";
+                filePath = "2附加癌症扩展特需医疗保险金费率表";
+//                filePath = "3附加癌症住院津贴费率表";
+                break;
         }
         return filePath;
     }
@@ -462,6 +468,10 @@ public class RateFactory {
                 break;
             case RATE_FXZYB:
                 columnTitle = "Age:投保年龄,SIFlag:有无社保,PayPeriod:缴费期间,Rate:费率";
+            case RATE_KTGRAZ:
+//                columnTitle = "Age:投保年龄,SIFlag:有无社保,Mult:年费率,Amount:保险金额,PayPeriod:缴费期间,Rate:费率";
+                columnTitle = "Age:投保年龄,Mult:年费率,MainRiskAmount:主险保额,PayPeriod:缴费期间,Rate:费率";
+//                columnTitle = "Age:投保年龄,Mult:年费率,PayPeriod:缴费期间,Rate:费率";
 
         }
         return columnTitle;
@@ -600,6 +610,10 @@ public class RateFactory {
                 return new PickFactorOfRate(3, 421, 0, 8, columnTitle);
             case RATE_FXZYB:
                 return new PickFactorOfRate(0, 25, 0, 2, columnTitle);
+            case RATE_KTGRAZ:
+//                return new PickFactorOfRate(0, 65, 0, 4, columnTitle);
+                return new PickFactorOfRate(0, 65, 0, 3, columnTitle);
+//            return new PickFactorOfRate(0, 65, 0, 2, columnTitle);
 
         }
         return null;
